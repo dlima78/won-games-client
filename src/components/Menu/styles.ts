@@ -94,7 +94,8 @@ export const MenuFull = styled.nav<MenuFullProps>`
     opacity: ${isOpen ? 1 : 0};
     overflow: hidden;
     pointer-events: ${isOpen ? 'all' : 'none'};
-    position: absolute;
+    position: fixed;
+    z-index: ${theme.layers.menu};
     right: 0;
     top: 0;
     transition: opacity 0.3s ease-in-out;
