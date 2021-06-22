@@ -27,6 +27,7 @@ export const withIcon: Story = (args) => <Button {...args} />
 withIcon.args = {
   size: 'small',
   children: 'Buy Now',
+  minimal: true,
   icon: <AddShoppingCart />
 }
 
