@@ -56,7 +56,7 @@ describe('<Highlight />', () => {
     })
   })
 
-  it('should render align right by default', () => {
+  it('should render left alignment', () => {
     const { container } = renderWithTheme(
       <Highlight {...props} alignment="left" />
     )
