@@ -1,3 +1,4 @@
+import Link from 'next/dist/client/link'
 import { useState } from 'react'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-line'
 import {
@@ -45,7 +46,9 @@ const Menu = ({ username }: MenuProps) => {
         </S.IconWrapper>
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Entrar</Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a">Entrar</Button>
+            </Link>
           </MediaMatch>
         )}
       </S.MenuGroup>
@@ -64,13 +67,15 @@ const Menu = ({ username }: MenuProps) => {
         </S.MenuNav>
         {!username && (
           <S.RegisterBox>
-            <Button fullWidth size="medium">
-              Entrar
-            </Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a" fullWidth size="medium">
+                Entrar
+              </Button>
+            </Link>
             <span>ou</span>
-            <S.CreateAccount href="#" title="Sign Up">
-              Crie sua conta
-            </S.CreateAccount>
+            <Link href="/sign-up" passHref>
+              <S.CreateAccount title="Sign Up">Crie sua conta</S.CreateAccount>
+            </Link>
           </S.RegisterBox>
         )}
       </S.MenuFull>

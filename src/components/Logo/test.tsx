@@ -18,6 +18,11 @@ describe('<Logo />', () => {
     })
   })
 
+  it('should render a black label when color is passed', () => {
+    const { container } = renderWithTheme(<Logo id="myId" />)
+    expect(container.querySelector('#paint0_linear_myId')).toBeInTheDocument()
+  })
+
   it('should render a normal Logo when size is default', () => {
     renderWithTheme(<Logo />)
     expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
