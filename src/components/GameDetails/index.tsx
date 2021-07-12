@@ -11,6 +11,7 @@ type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
 export type GameDetailsProps = {
   developer: string
   platforms: Plataform[]
+  publisher: string
   releaseDate: string
   rating: Rating
   genres: string[]
@@ -18,6 +19,7 @@ export type GameDetailsProps = {
 
 const GameDetails = ({
   platforms,
+  publisher,
   developer,
   releaseDate,
   rating,
@@ -61,7 +63,7 @@ const GameDetails = ({
         </S.Block>
         <S.Block>
           <S.Label>Editora</S.Label>
-          <S.Desription>Gearbox Software</S.Desription>
+          <S.Desription>{publisher}</S.Desription>
         </S.Block>
         <S.Block>
           <S.Label>Classificação</S.Label>

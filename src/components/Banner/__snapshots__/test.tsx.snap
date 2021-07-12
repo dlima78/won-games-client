@@ -89,7 +89,7 @@ exports[`<Banner /> should render correctly 1`] = `
 @media (min-width:768px) {
   .c2 {
     border-radius: 0 0 0.4rem 0.4rem;
-    padding: 4rem;
+    padding: 4.0rem;
     position: absolute;
     bottom: 0;
     left: 0;
