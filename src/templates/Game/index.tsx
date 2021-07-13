@@ -1,11 +1,12 @@
-import Gallery, { GalleryImageProps } from 'components/Gallery'
-import { GameCardProps } from 'components/GameCard'
 import GameDetails, { GameDetailsProps } from 'components/GameDetails'
+import Gallery, { GalleryImageProps } from 'components/Gallery'
 import GameInfo, { GameInfoProps } from 'components/GameInfo'
-import { HighlightProps } from 'components/Highlight'
-import Showcase from 'components/Showcase'
 import TextContent from 'components/TextContent'
+import Showcase from 'components/Showcase'
 import Base from 'templates/Base'
+import { HighlightProps } from 'components/Highlight'
+import { GameCardProps } from 'components/GameCard'
+import { Divider } from 'components/Divider'
 
 import * as S from './styles'
 
@@ -36,20 +37,26 @@ const Game = ({
       <S.SectionGameInfo>
         <GameInfo {...gameInfo} />
       </S.SectionGameInfo>
+
       <S.SectionGallery>
         {!!gallery && <Gallery items={gallery} />}
       </S.SectionGallery>
+
       <S.SectionDescription>
         <TextContent title="Description" content={description} />
       </S.SectionDescription>
+
       <S.SectionGameDetails>
         <GameDetails {...details} />
+        <Divider />
       </S.SectionGameDetails>
+
       <Showcase
         title="Em breve"
         games={upcommingGames}
         highlight={upcommingHighlight}
       />
+
       <Showcase title="Você também pode gostar de" games={recommendedGames} />
     </S.Main>
   </Base>
