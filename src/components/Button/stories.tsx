@@ -22,6 +22,12 @@ Default.args = {
   children: 'Buy Now'
 }
 
+export const Disabled: Story = (args) => <Button {...args} disabled />
+
+Default.args = {
+  children: 'Buy Now'
+}
+
 export const withIcon: Story = (args) => <Button {...args} />
 
 withIcon.args = {
