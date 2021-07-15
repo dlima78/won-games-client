@@ -1,26 +1,26 @@
-import React, { InputHTMLAttributes, useState } from 'react'
+import { useState, InputHTMLAttributes } from 'react'
+
 import * as S from './styles'
 
 export type TextFieldProps = {
   onInput?: (value: string) => void
-  error?: string
   label?: string
-  labelFor?: string
-  icon?: React.ReactNode
   initialValue?: string
+  icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
   disabled?: boolean
-} & InputHTMLAttributes<HTMLElement>
+  error?: string
+} & InputHTMLAttributes<HTMLInputElement>
 
 const TextField = ({
-  error,
-  label,
-  labelFor = '',
-  initialValue = '',
   icon,
-  onInput,
   iconPosition = 'left',
+  label,
+  name,
+  initialValue = '',
+  error,
   disabled = false,
+  onInput,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
@@ -34,16 +34,17 @@ const TextField = ({
 
   return (
     <S.Wrapper disabled={disabled} error={!!error}>
-      <S.Label htmlFor={labelFor}>{label}</S.Label>
+      {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
       <S.InputWrapper>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
         <S.Input
           type="text"
-          id={labelFor}
-          value={value}
           onChange={onChange}
+          value={value}
           iconPosition={iconPosition}
           disabled={disabled}
+          name={name}
+          {...(label ? { id: name } : {})}
           {...props}
         />
       </S.InputWrapper>
@@ -51,4 +52,5 @@ const TextField = ({
     </S.Wrapper>
   )
 }
+
 export default TextField

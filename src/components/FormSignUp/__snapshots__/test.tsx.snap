@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FormSignUp /> should render the form 1`] = `
-.c5 {
+.c4 {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
 }
 
-.c8 {
+.c7 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -35,11 +35,11 @@ exports[`<FormSignUp /> should render the form 1`] = `
   width: 100%;
 }
 
-.c8:hover {
+.c7:hover {
   background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -51,11 +51,11 @@ exports[`<FormSignUp /> should render the form 1`] = `
   padding: 0 1.6rem;
 }
 
-.c3:focus-within {
+.c2:focus-within {
   box-shadow: 0 0 0.5rem #F231A5;
 }
 
-.c6 {
+.c5 {
   background: transparent;
   border: 0;
   color: #030517;
@@ -67,13 +67,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
   width: 100%;
 }
 
-.c2 {
-  font-size: 1.4rem;
-  color: #030517;
-  cursor: pointer;
-}
-
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,7 +79,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
   order: 0;
 }
 
-.c4 > svg {
+.c3 > svg {
   width: 100%;
 }
 
@@ -93,17 +87,17 @@ exports[`<FormSignUp /> should render the form 1`] = `
   margin: 0.8rem;
 }
 
-.c0 .c7 {
+.c0 .c6 {
   margin: 3.2rem auto 1.6rem;
 }
 
-.c9 {
+.c8 {
   text-align: center;
   color: #030517;
   font-size: 1.4rem;
 }
 
-.c9 a {
+.c8 a {
   border-bottom: 0.1rem solid #3CD3C1;
   color: #3CD3C1;
   -webkit-text-decoration: none;
@@ -113,7 +107,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
   transition: color,border,0.1s ease-in-out;
 }
 
-.c9 a:hover {
+.c8 a:hover {
   color: #29b3a3;
   border-bottom: 0.1rem solid #29b3a3;
 }
@@ -127,19 +121,15 @@ exports[`<FormSignUp /> should render the form 1`] = `
         <div
           class="c1 "
         >
-          <label
-            class="c2"
-            for=""
-          />
           <div
-            class="c3"
+            class="c2"
           >
             <div
-              class="c4"
+              class="c3"
             >
               <svg
                 aria-hidden="true"
-                class="c5"
+                class="c4"
                 fill="currentColor"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -155,8 +145,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
               </svg>
             </div>
             <input
-              class="c6"
-              id=""
+              class="c5"
               name="name"
               placeholder="Nome"
               type="text"
@@ -167,19 +156,15 @@ exports[`<FormSignUp /> should render the form 1`] = `
         <div
           class="c1 "
         >
-          <label
-            class="c2"
-            for=""
-          />
           <div
-            class="c3"
+            class="c2"
           >
             <div
-              class="c4"
+              class="c3"
             >
               <svg
                 aria-hidden="true"
-                class="c5"
+                class="c4"
                 fill="currentColor"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -195,8 +180,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
               </svg>
             </div>
             <input
-              class="c6"
-              id=""
+              class="c5"
               name="email"
               placeholder="Email"
               type="email"
@@ -207,19 +191,15 @@ exports[`<FormSignUp /> should render the form 1`] = `
         <div
           class="c1 "
         >
-          <label
-            class="c2"
-            for=""
-          />
           <div
-            class="c3"
+            class="c2"
           >
             <div
-              class="c4"
+              class="c3"
             >
               <svg
                 aria-hidden="true"
-                class="c5"
+                class="c4"
                 fill="currentColor"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -242,8 +222,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
               </svg>
             </div>
             <input
-              class="c6"
-              id=""
+              class="c5"
               name="password"
               placeholder="Senha"
               type="password"
@@ -254,19 +233,15 @@ exports[`<FormSignUp /> should render the form 1`] = `
         <div
           class="c1 "
         >
-          <label
-            class="c2"
-            for=""
-          />
           <div
-            class="c3"
+            class="c2"
           >
             <div
-              class="c4"
+              class="c3"
             >
               <svg
                 aria-hidden="true"
-                class="c5"
+                class="c4"
                 fill="currentColor"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -289,8 +264,7 @@ exports[`<FormSignUp /> should render the form 1`] = `
               </svg>
             </div>
             <input
-              class="c6"
-              id=""
+              class="c5"
               name="passwordConfirm"
               placeholder="Confirmar senha"
               type="password"
@@ -299,14 +273,14 @@ exports[`<FormSignUp /> should render the form 1`] = `
           </div>
         </div>
         <button
-          class="c7 c8"
+          class="c6 c7"
         >
           <span>
             Criar conta
           </span>
         </button>
         <div
-          class="c9"
+          class="c8"
         >
           Já tem uma conta?
           <a
