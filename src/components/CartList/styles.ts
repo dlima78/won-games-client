@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 
 export const Footer = styled.div`
   ${({ theme }) => css`
+    align-items: center;
     background: ${tint(0.2, theme.colors.lightGray)};
     color: ${theme.colors.black};
     font-weight: ${theme.font.bold};
