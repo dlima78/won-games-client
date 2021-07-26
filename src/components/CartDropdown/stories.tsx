@@ -23,3 +23,9 @@ Default.args = {
   items: mockItems,
   total: 'RS 310,00'
 }
+
+export const Empty: Story<CartDropdownProps> = () => (
+  <div style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}>
+    <CartDropdown />
+  </div>
+)
