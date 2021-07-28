@@ -1,16 +1,17 @@
-import Link from 'next/dist/client/link'
-import { useState } from 'react'
-import { Menu2 as MenuIcon } from '@styled-icons/remix-line'
-import {
-  ShoppingCart as ShoppingCartIcon,
-  Search as SearchIcon,
-  Close as CloseIcon
-} from '@styled-icons/material-outlined'
+import Link from 'next/link'
 
-import Logo from 'components/Logo'
+import { useState } from 'react'
+import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
+import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
+import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
+
 import Button from 'components/Button'
-import * as S from './styles'
+import Logo from 'components/Logo'
 import MediaMatch from 'components/MediaMatch'
+import * as S from './styles'
+import CartDropdown from 'components/CartDropdown'
+import CartIcon from 'components/CartIcon'
+import UserDropdown from 'components/UserDropdown'
 
 export type MenuProps = {
   username?: string
@@ -18,6 +19,7 @@ export type MenuProps = {
 
 const Menu = ({ username }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
+
   return (
     <S.Wrapper>
       <MediaMatch lessThan="medium">
@@ -39,7 +41,9 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <S.MenuLink>Home</S.MenuLink>
           </Link>
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <Link href="/games" passHref>
+            <S.MenuLink>Explore</S.MenuLink>
+          </Link>
         </S.MenuNav>
       </MediaMatch>
 
@@ -48,15 +52,26 @@ const Menu = ({ username }: MenuProps) => {
           <SearchIcon aria-label="Search" />
         </S.IconWrapper>
         <S.IconWrapper>
-          <ShoppingCartIcon aria-label="Open Shopping Cart" />
-        </S.IconWrapper>
-        {!username && (
           <MediaMatch greaterThan="medium">
-            <Link href="/sign-in" passHref>
-              <Button as="a">Entrar</Button>
+            <CartDropdown />
+          </MediaMatch>
+          <MediaMatch lessThan="medium">
+            <Link href="/cart">
+              <a>
+                <CartIcon />
+              </a>
             </Link>
           </MediaMatch>
-        )}
+        </S.IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!username ? (
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sign in</Button>
+            </Link>
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMatch>
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
@@ -65,24 +80,32 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <S.MenuLink>Home</S.MenuLink>
           </Link>
-          <S.MenuLink href="#">Explore</S.MenuLink>
+          <Link href="/games" passHref>
+            <S.MenuLink>Explore</S.MenuLink>
+          </Link>
+
           {!!username && (
             <>
-              <S.MenuLink href="#">Minha conta</S.MenuLink>
-              <S.MenuLink href="#">Favoritos</S.MenuLink>
+              <Link href="/profile/me" passHref>
+                <S.MenuLink>My profile</S.MenuLink>
+              </Link>
+              <Link href="/profile/wishlist" passHref>
+                <S.MenuLink>Wishlist</S.MenuLink>
+              </Link>
             </>
           )}
         </S.MenuNav>
+
         {!username && (
           <S.RegisterBox>
             <Link href="/sign-in" passHref>
-              <Button as="a" fullWidth size="medium">
-                Entrar
+              <Button fullWidth size="large" as="a">
+                Sign in
               </Button>
             </Link>
-            <span>ou</span>
+            <span>or</span>
             <Link href="/sign-up" passHref>
-              <S.CreateAccount title="Sign Up">Crie sua conta</S.CreateAccount>
+              <S.CreateAccount title="Sign Up">Sign Up</S.CreateAccount>
             </Link>
           </S.RegisterBox>
         )}
@@ -90,4 +113,5 @@ const Menu = ({ username }: MenuProps) => {
     </S.Wrapper>
   )
 }
+
 export default Menu
