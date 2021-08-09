@@ -29,7 +29,7 @@ const linkModifiers = {
 }
 
 type LinkProps = {
-  isActive: boolean
+  isActive?: boolean
 }
 
 export const Link = styled.a<LinkProps>`
