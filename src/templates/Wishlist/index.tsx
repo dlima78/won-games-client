@@ -10,19 +10,21 @@ import Empty from 'components/Empty'
 
 export type WishlistTemplateProps = {
   games?: GameCardProps[]
+  recommendedTitle?: string
   recommendedGames: GameCardProps[]
   recommendedHighlight: HighlightProps
 }
 
 const Wishlist = ({
   games = [],
+  recommendedTitle,
   recommendedGames,
   recommendedHighlight
 }: WishlistTemplateProps) => (
   <Base>
     <Container>
       <Heading lineLeft lineColor="secondary">
-        Favoritos
+        Whishlist
       </Heading>
 
       {games.length ? (
@@ -42,7 +44,7 @@ const Wishlist = ({
       <Divider />
     </Container>
     <Showcase
-      title="Você pode gostar de"
+      title={recommendedTitle || 'You may like these games'}
       highlight={recommendedHighlight}
       games={recommendedGames}
     />

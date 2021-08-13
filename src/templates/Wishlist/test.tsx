@@ -7,6 +7,7 @@ import Wishlist, { WishlistTemplateProps } from '.'
 
 const props: WishlistTemplateProps = {
   games: gamesMock,
+  recommendedTitle: 'You may like these games',
   recommendedGames: gamesMock,
   recommendedHighlight: highlightMock
 }
@@ -23,7 +24,7 @@ describe('<Wishlist />', () => {
     renderWithTheme(<Wishlist {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: /favoritos/i })
+      screen.getByRole('heading', { name: /Whishlist/i })
     ).toBeInTheDocument()
     expect(screen.getAllByText(/population zero/i)).toHaveLength(6)
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
