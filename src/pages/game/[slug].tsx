@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/dist/client/router'
 import Game, { GameTemplateProps } from 'templates/Game'
 import { initializeApollo } from 'utils/apollo'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'

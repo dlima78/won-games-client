@@ -13,7 +13,7 @@ const props = {
 
 describe('<Banner />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<Banner {...props} />)
+    renderWithTheme(<Banner {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /Death death/i })
@@ -24,8 +24,6 @@ describe('<Banner />', () => {
     expect(
       screen.getByRole('image', { name: /Death death/i })
     ).toBeInTheDocument()
-
-    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render a Ribbon', () => {
