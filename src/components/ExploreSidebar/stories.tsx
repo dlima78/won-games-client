@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Meta, Story } from '@storybook/react'
 import ExploreSidebar, { ExploreSidebarProps } from '.'
 
 import items from './mock'

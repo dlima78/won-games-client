@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { Meta, Story } from '@storybook/react'
 import CartDropdown, { CartDropdownProps } from '.'
 
 import mockItems from 'components/CartList/mock'
