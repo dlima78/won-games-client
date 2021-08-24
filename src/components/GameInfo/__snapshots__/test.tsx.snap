@@ -29,9 +29,9 @@ exports[`<GameInfo /> should render game informations 1`] = `
   padding: 0.8rem;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: 1.4rem;
-  height: 4rem;
-  padding: 0.8rem 3.2rem;
+  font-size: 1.6rem;
+  height: 5rem;
+  padding: 0.8rem 4.8rem;
 }
 
 .c6:hover {
@@ -256,6 +256,7 @@ exports[`<GameInfo /> should render game informations 1`] = `
     >
       <svg
         aria-hidden="true"
+        aria-label="Add to cart"
         class="c7"
         fill="currentColor"
         focusable="false"
@@ -271,7 +272,7 @@ exports[`<GameInfo /> should render game informations 1`] = `
         />
       </svg>
       <span>
-        Add Adicionar
+        Add to cart
       </span>
     </button>
     <button
@@ -295,7 +296,7 @@ exports[`<GameInfo /> should render game informations 1`] = `
         />
       </svg>
       <span>
-        Lista de desejos
+        Wishlist
       </span>
     </button>
   </div>
