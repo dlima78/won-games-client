@@ -1,6 +1,5 @@
 import 'match-media-mock'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helper'
+import { render, screen } from 'utils/test-utils'
 
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
@@ -54,7 +53,7 @@ jest.mock('components/Empty', () => ({
 
 describe('<Cart />', () => {
   it('should render sections', () => {
-    renderWithTheme(<Cart {...props} />)
+    render(<Cart {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /meu carrinho/i })
@@ -65,7 +64,7 @@ describe('<Cart />', () => {
   })
 
   it('should render empty section if there is no item', () => {
-    renderWithTheme(<Cart {...props} items={[]} />)
+    render(<Cart {...props} items={[]} />)
 
     expect(screen.getByTestId('Mock Empty')).toBeInTheDocument()
   })

@@ -1,7 +1,5 @@
 import 'match-media-mock'
-import { screen } from '@testing-library/react'
-
-import { renderWithTheme } from 'utils/tests/helper'
+import { render, screen } from 'utils/test-utils'
 import BannerSlider from '.'
 
 const items = [
@@ -24,12 +22,12 @@ const items = [
 
 describe('<BannerSlider />', () => {
   it('should render vertical slider', () => {
-    const { container } = renderWithTheme(<BannerSlider items={items} />)
+    const { container } = render(<BannerSlider items={items} />)
 
     expect(container.querySelector('.slick-vertical')).toBeInTheDocument()
   })
   it('should render with one active item', () => {
-    const { container } = renderWithTheme(<BannerSlider items={items} />)
+    const { container } = render(<BannerSlider items={items} />)
 
     expect(container.querySelectorAll('.slick-slide')).toHaveLength(2)
     expect(container.querySelectorAll('.slick-active')).toHaveLength(2)
@@ -43,7 +41,7 @@ describe('<BannerSlider />', () => {
     ).toBeInTheDocument()
   })
   it('should render with dots', () => {
-    const { container } = renderWithTheme(<BannerSlider items={items} />)
+    const { container } = render(<BannerSlider items={items} />)
 
     expect(container.querySelector('.slick-dots')).toBeInTheDocument()
   })

@@ -26,7 +26,7 @@ export type CartContextData = {
   loading: boolean
 }
 
-export const CartContexDefaultValues = {
+export const CartContextDefaultValues = {
   items: [],
   quantity: 0,
   total: '$0.00',
@@ -38,7 +38,7 @@ export const CartContexDefaultValues = {
 }
 
 export const CartContext = createContext<CartContextData>(
-  CartContexDefaultValues
+  CartContextDefaultValues
 )
 
 export type CartProviderProps = {
