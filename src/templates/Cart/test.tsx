@@ -12,6 +12,7 @@ const props = {
   items: itemsMock,
   total: '$ 430,00',
   cards: cardsMock,
+  recommendedTitle: 'You may like these games',
   recommendedHighlight: highlightMock,
   recommendedGames: gamesMock
 }
@@ -44,13 +45,6 @@ jest.mock('components/PaymentOptions', () => ({
   }
 }))
 
-jest.mock('components/Empty', () => ({
-  __esModule: true,
-  default: function Mock() {
-    return <div data-testid="Mock Empty" />
-  }
-}))
-
 describe('<Cart />', () => {
   it('should render sections', () => {
     render(<Cart {...props} />)
@@ -61,11 +55,5 @@ describe('<Cart />', () => {
     expect(screen.getByTestId('Mock Cart')).toBeInTheDocument()
     expect(screen.getByTestId('Mock PaymentOptions')).toBeInTheDocument()
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
-  })
-
-  it('should render empty section if there is no item', () => {
-    render(<Cart {...props} items={[]} />)
-
-    expect(screen.getByTestId('Mock Empty')).toBeInTheDocument()
   })
 })
