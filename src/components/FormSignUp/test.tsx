@@ -1,26 +1,35 @@
+import { MockedProvider } from '@apollo/client/testing'
 import { render, screen } from 'utils/test-utils'
 
 import FormSignUp from '.'
 
 describe('<FormSignUp />', () => {
   it('should render the form', () => {
-    const { container } = render(<FormSignUp />)
+    const { container } = render(
+      <MockedProvider>
+        <FormSignUp />
+      </MockedProvider>
+    )
 
-    expect(screen.getByPlaceholderText('Nome')).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Senha')).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Confirmar senha')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Confirm password')).toBeInTheDocument()
     expect(
-      screen.getByRole('button', { name: /criar conta/i })
+      screen.getByRole('button', { name: /sign up now/i })
     ).toBeInTheDocument()
 
-    expect(container.parentElement).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should render Sign Up link', () => {
-    render(<FormSignUp />)
+  it('should render text and link to sign in', () => {
+    render(
+      <MockedProvider>
+        <FormSignUp />
+      </MockedProvider>
+    )
 
-    expect(screen.getByText('Já tem uma conta?')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /Entrar/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /sign in/i })).toBeInTheDocument()
+    expect(screen.getByText(/already have an account\?/i)).toBeInTheDocument()
   })
 })
