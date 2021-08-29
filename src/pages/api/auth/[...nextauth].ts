@@ -1,8 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
-import { GenericObject } from 'next-auth/_utils'
-import { URLSearchParams } from 'url'
+import {
+  GenericObject,
+  NextApiRequest,
+  NextApiResponse
+} from 'next-auth/_utils'
 
 const options = {
   pages: {
@@ -17,7 +19,7 @@ const options = {
           `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
           {
             method: 'POST',
-            body: new URLSearchParams({ identifier: email, password: password })
+            body: new URLSearchParams({ identifier: email, password })
           }
         )
 
@@ -32,7 +34,7 @@ const options = {
     })
   ],
   callbacks: {
-    sessions: async (session: GenericObject, user: GenericObject) => {
+    session: async (session: GenericObject, user: GenericObject) => {
       session.jwt = user.jwt
       session.id = user.id
 
@@ -45,6 +47,7 @@ const options = {
         token.name = user.username
         token.jwt = user.jwt
       }
+
       return Promise.resolve(token)
     }
   }
