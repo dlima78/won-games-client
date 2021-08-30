@@ -55,3 +55,15 @@ export const FormLink = styled.div`
     }
   `}
 `
+
+export const FormSuccess = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    color: ${theme.colors.black};
+    font-size: ${theme.font.sizes.small};
+    svg {
+      color: ${theme.colors.secondary};
+      width: 2.4rem;
+    }
+  `}
+`

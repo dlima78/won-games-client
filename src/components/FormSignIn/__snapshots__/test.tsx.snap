@@ -167,7 +167,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
               class="c5"
               name="email"
               placeholder="Email"
-              type="email"
+              type="text"
               value=""
             />
           </div>
@@ -216,7 +216,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
         </div>
         <a
           class="c6"
-          href="#"
+          href="/forgot-password"
         >
           Forgot your password?
         </a>

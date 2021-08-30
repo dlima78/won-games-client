@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
 import { signIn } from 'next-auth/client'
-import { FieldErrors, signUpValidate } from 'utils/validate'
+import { FieldErrors, signUpValidate } from 'utils/validations'
 
 const FormSignUp = () => {
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({

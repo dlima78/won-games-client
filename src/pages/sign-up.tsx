@@ -3,7 +3,7 @@ import Auth from 'templates/Auth'
 
 export default function SignUp() {
   return (
-    <Auth title="Cadastrar">
+    <Auth title="Sign up">
       <FormSignUp />
     </Auth>
   )
