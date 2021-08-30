@@ -7,15 +7,12 @@ describe('<FormProfile />', () => {
     render(<FormProfile />)
 
     expect(
-      screen.getByRole('heading', { name: /Meu Perfil/i })
+      screen.getByRole('heading', { name: /My Profile/i })
     ).toBeInTheDocument()
 
     expect(screen.getByRole('textbox', { name: /name/i })).toBeInTheDocument()
     expect(screen.getByRole('textbox', { name: /email/i })).toBeInTheDocument()
 
-    expect(screen.getByPlaceholderText(/digite sua senha/i)).toBeInTheDocument()
-    expect(screen.getByPlaceholderText(/nova senha/i)).toBeInTheDocument()
-
-    expect(screen.getByRole('button', { name: /salvar/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
   })
 })
