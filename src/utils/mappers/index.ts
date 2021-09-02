@@ -4,6 +4,7 @@ import {
   QueryHome_sections_freeGames_highlight
 } from 'graphql/generated/QueryHome'
 import { QueryWishlist_wishlists_games } from 'graphql/generated/QueryWishlist'
+
 import formatPrice from 'utils/format-price'
 
 export const bannerMapper = (banners: QueryHome_banners[]) => {
@@ -16,13 +17,13 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
     ...(banner.ribbon && {
       ribbon: banner.ribbon.text,
       ribbonColor: banner.ribbon.color,
-      ribbontSize: banner.ribbon.size
+      ribbonSize: banner.ribbon.size
     })
   }))
 }
 
 export const gamesMapper = (
-  games: QueryGames_games[] | QueryWishlist_wishlists_games | null | undefined
+  games: QueryGames_games[] | QueryWishlist_wishlists_games[] | null | undefined
 ) => {
   return games
     ? games.map((game) => ({
@@ -52,13 +53,13 @@ export const highlightMapper = (
     : {}
 }
 
-export const cartMapper = (games: QueryGames_games[] | null | undefined) => {
+export const cartMapper = (games: QueryGames_games[] | undefined) => {
   return games
     ? games.map((game) => ({
         id: game.id,
         img: `http://localhost:1337${game.cover?.url}`,
-        price: formatPrice(game.price),
-        title: game.name
+        title: game.name,
+        price: formatPrice(game.price)
       }))
     : []
 }

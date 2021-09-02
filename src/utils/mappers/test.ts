@@ -3,12 +3,15 @@ import {
   QueryHome_banners,
   QueryHome_sections_newGames_highlight
 } from 'graphql/generated/QueryHome'
-import { bannerMapper, highlightMapper, gamesMapper, cartMapper } from '.'
+
+import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.'
 
 describe('bannerMapper()', () => {
   it('should return the right format when mapped', () => {
     const banner = {
-      image: { url: '/image.jpg' },
+      image: {
+        url: '/image.jpg'
+      },
       title: 'Banner title',
       subtitle: 'Banner subtitle',
       button: {
@@ -18,7 +21,7 @@ describe('bannerMapper()', () => {
       ribbon: {
         text: 'ribbon text',
         color: 'primary',
-        size: 'normal'
+        size: 'small'
       }
     } as QueryHome_banners
 
@@ -31,7 +34,7 @@ describe('bannerMapper()', () => {
         buttonLink: 'button link',
         ribbon: 'ribbon text',
         ribbonColor: 'primary',
-        ribbontSize: 'normal'
+        ribbonSize: 'small'
       }
     ])
   })
@@ -104,25 +107,26 @@ describe('highlightMapper()', () => {
 })
 
 describe('cartMapper()', () => {
-  it('should return an empty array if there are no items', () => {
+  it('should return empty array if no games', () => {
     expect(cartMapper(undefined)).toStrictEqual([])
   })
-  it('should return mapped cart items', () => {
+
+  it('should return mapped items', () => {
     const game = {
       id: '1',
-      name: 'Sample Game',
-      price: 10,
       cover: {
-        url: '/sample-game.jpg'
-      }
+        url: '/image.jpg'
+      },
+      name: 'game',
+      price: 10
     } as QueryGames_games
 
     expect(cartMapper([game])).toStrictEqual([
       {
         id: '1',
-        img: 'http://localhost:1337/sample-game.jpg',
-        price: '$10.00',
-        title: 'Sample Game'
+        img: 'http://localhost:1337/image.jpg',
+        title: 'game',
+        price: '$10.00'
       }
     ])
   })

@@ -5,9 +5,9 @@ type LoginReqBody = {
 }
 
 type ResetReqBody = {
-  password: string
-  confirm_password: string
   code: string
+  password: string
+  passwordConfirmation: string
 }
 
 export const handlers = [
@@ -16,6 +16,7 @@ export const handlers = [
     (req, res, ctx) => {
       const { email } = req.body
 
+      // quando der erro
       if (email === 'false@email.com') {
         return res(
           ctx.status(400),
@@ -33,7 +34,6 @@ export const handlers = [
           })
         )
       }
-
       return res(
         ctx.status(200),
         ctx.json({
@@ -42,6 +42,7 @@ export const handlers = [
       )
     }
   ),
+
   rest.post<ResetReqBody>(
     `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
     (req, res, ctx) => {
@@ -56,7 +57,7 @@ export const handlers = [
               {
                 messages: [
                   {
-                    message: 'Incorrect code provided'
+                    message: 'Incorrect code provided.'
                   }
                 ]
               }

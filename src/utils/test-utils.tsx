@@ -7,7 +7,7 @@ import {
 import {
   WishlistContext,
   WishlistContextData,
-  WishlistDefaultValues
+  WishlistContextDefaultValues
 } from 'hooks/use-wishlist'
 import { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
@@ -22,7 +22,7 @@ const customRender = (
   ui: ReactElement,
   {
     cartProviderProps = CartContextDefaultValues,
-    wishlistProviderProps = WishlistDefaultValues,
+    wishlistProviderProps = WishlistContextDefaultValues,
     ...renderOptions
   }: CustomRenderProps = {}
 ) =>
