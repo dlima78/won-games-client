@@ -1,6 +1,5 @@
 import {
   AccountCircle,
-  CreditCard,
   ExitToApp,
   FormatListBulleted
 } from '@styled-icons/material-outlined'
@@ -15,24 +14,15 @@ export type ProfileMenuProps = {
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
   <S.Nav>
     <Link href="/profile/me" passHref>
-      <S.Link isActive={activeLink === '/profile/me'} title="Meu perfil">
+      <S.Link isActive={activeLink === '/profile/me'} title="My profile">
         <AccountCircle size={24} />
-        <span>Meu Perfil</span>
-      </S.Link>
-    </Link>
-    <Link href="/profile/cards" passHref>
-      <S.Link isActive={activeLink === '/profile/cards'} title="Meus cartões">
-        <CreditCard size={24} />
-        <span>Meus Cartões</span>
+        <span>My Profile</span>
       </S.Link>
     </Link>
     <Link href="/profile/orders" passHref>
-      <S.Link
-        isActive={activeLink === '/profile/orders'}
-        title="Minhas compras"
-      >
+      <S.Link isActive={activeLink === '/profile/orders'} title="My orders">
         <FormatListBulleted size={24} />
-        <span>Minhas Compras</span>
+        <span>My Orders</span>
       </S.Link>
     </Link>
     <S.Link role="button" onClick={() => signOut()}>
