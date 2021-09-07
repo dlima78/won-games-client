@@ -12,8 +12,10 @@ import Showcase from 'components/Showcase'
 import Base from 'templates/Base'
 
 import * as S from './styles'
+import { Session } from 'next-auth/client'
 
 export type CartProps = {
+  session: Session
   recommendedGames: GameCardProps[]
   recommendedTitle: string
   recommendedHighlight: HighlightProps
@@ -22,6 +24,7 @@ export type CartProps = {
 const stripe = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`)
 
 const Cart = ({
+  session,
   recommendedGames,
   recommendedTitle,
   recommendedHighlight
@@ -35,7 +38,7 @@ const Cart = ({
         <S.Content>
           <CartList />
           <Elements stripe={stripe}>
-            <PaymentForm />
+            <PaymentForm session={session} />
           </Elements>
         </S.Content>
 
