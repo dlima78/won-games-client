@@ -59,6 +59,7 @@ export const Wrapper = styled.div<Omit<RibbonProps, 'children'>>`
     font-weight: ${theme.font.bold};
     top: ${theme.spacings.xsmall};
     position: absolute;
+    z-index: ${theme.layers.base};
 
     &::before {
       content: '';

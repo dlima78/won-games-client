@@ -21,7 +21,7 @@ describe('<Banner />', () => {
       screen.getByRole('heading', { name: /Play the new CrashLands season/i })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('image', { name: /Death death/i })
+      screen.getByRole('img', { name: /Death death/i })
     ).toBeInTheDocument()
   })
 
