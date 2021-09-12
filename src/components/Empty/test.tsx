@@ -12,7 +12,9 @@ describe('<Empty />', () => {
     const { container } = render(<Empty {...props} hasLink />)
 
     expect(
-      screen.getByRole('image', { name: /a gamer a couch playing videogame/i })
+      screen.getByRole('img', {
+        name: /a gamer in a couch playing videogame/i
+      })
     ).toBeInTheDocument()
     expect(
       screen.getByRole('heading', { name: /simple title/i })
