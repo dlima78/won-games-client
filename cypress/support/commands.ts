@@ -64,7 +64,7 @@ Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false}) => {
       cy.getByDataCy('highlight').within(() => {
         cy.findByRole('link').should('have.attr', 'href')
       })
-    }    
+    }
   })
 })
 

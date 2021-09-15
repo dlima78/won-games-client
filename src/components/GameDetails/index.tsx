@@ -32,19 +32,19 @@ const GameDetails = ({
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-cy="game-details">
       <MediaMatch greaterThan="small">
         <Heading lineLeft lineColor="secondary">
-          Detalhes do jogo
+          Game Details
         </Heading>
       </MediaMatch>
       <S.Content>
         <S.Block>
-          <S.Label>Desenvolvedor</S.Label>
+          <S.Label>Developer</S.Label>
           <S.Desription>{developer}</S.Desription>
         </S.Block>
         <S.Block>
-          <S.Label>Data de Lançamento</S.Label>
+          <S.Label>Release Date</S.Label>
           <S.Desription>
             {new Intl.DateTimeFormat('pt-BR', {
               day: 'numeric',
@@ -54,7 +54,7 @@ const GameDetails = ({
           </S.Desription>
         </S.Block>
         <S.Block>
-          <S.Label>Plataformas</S.Label>
+          <S.Label>Platforms</S.Label>
           <S.IconsWrapper>
             {platforms.map((icon: Plataform) => (
               <S.Icon key={icon}>{platformIcons[icon]}</S.Icon>
@@ -62,17 +62,17 @@ const GameDetails = ({
           </S.IconsWrapper>
         </S.Block>
         <S.Block>
-          <S.Label>Editora</S.Label>
+          <S.Label>Publisher</S.Label>
           <S.Desription>{publisher}</S.Desription>
         </S.Block>
         <S.Block>
-          <S.Label>Classificação</S.Label>
+          <S.Label>Rating</S.Label>
           <S.Desription>
             {rating === 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
           </S.Desription>
         </S.Block>
         <S.Block>
-          <S.Label>Genero</S.Label>
+          <S.Label>Genres</S.Label>
           <S.Desription>{genres.join(' / ')}</S.Desription>
         </S.Block>
       </S.Content>

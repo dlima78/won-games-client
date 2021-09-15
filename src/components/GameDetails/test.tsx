@@ -16,24 +16,22 @@ describe('<GameDetails />', () => {
     render(<GameDetails {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: /Desenvolvedor/i })
+      screen.getByRole('heading', { name: /Developer/i })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /Data de lançamento/i })
+      screen.getByRole('heading', { name: /Release Date/i })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /Plataformas/i })
+      screen.getByRole('heading', { name: /Platforms/i })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /Editora/i })
+      screen.getByRole('heading', { name: /Publisher/i })
     ).toBeInTheDocument()
 
-    expect(
-      screen.getByRole('heading', { name: /Classificação/i })
-    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /Rating/i })).toBeInTheDocument()
   })
 
   it('shoulder render platform icons', () => {
