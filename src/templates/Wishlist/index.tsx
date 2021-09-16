@@ -26,7 +26,7 @@ const Wishlist = ({
   const { items, loading } = useWishlist()
   return (
     <Base>
-      <Container>
+      <Container data-cy="wishlist">
         <Heading lineLeft lineColor="secondary">
           Wishlist
         </Heading>
@@ -44,7 +44,7 @@ const Wishlist = ({
         ) : (
           <Empty
             title="your wishlist is empty"
-            description="Jogos adicionados a favoritos aparecerão aqui"
+            description="Games added to your wishlist appear here"
             hasLink
           />
         )}

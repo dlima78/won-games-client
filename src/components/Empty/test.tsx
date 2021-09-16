@@ -22,7 +22,7 @@ describe('<Empty />', () => {
     expect(screen.getByText('Simple description')).toBeInTheDocument()
 
     expect(
-      screen.getByRole('link', { name: /Voltar para a loja/i })
+      screen.getByRole('link', { name: /Go back to store/i })
     ).toHaveAttribute('href', '/')
 
     expect(container.parentElement).toMatchSnapshot()
@@ -32,7 +32,7 @@ describe('<Empty />', () => {
     render(<Empty {...props} />)
 
     expect(
-      screen.queryByRole('link', { name: /Voltar para a loja/i })
+      screen.queryByRole('link', { name: /Go back to store/i })
     ).not.toBeInTheDocument()
   })
 })
