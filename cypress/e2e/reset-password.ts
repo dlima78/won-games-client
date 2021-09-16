@@ -1,0 +1,76 @@
+///<reference path="../support/index.d.ts" />
+
+describe('Reset Password', () => {
+  it('should show error if password does not match', () => {
+    cy.visit('/reset-password?code=12345678')
+
+    cy.findAllByPlaceholderText(/^password/i).type('123')
+    cy.findAllByPlaceholderText(/confirm password/i).type('321')
+    cy.findByRole('button', {name: /reset password/i}).click()
+
+    cy.findByText('confirm password does not match with password').should('exist')
+  });
+
+  it('should show error if code is not valid ', () => {
+    cy.intercept('POST', '**/auth/reset-password', res => {
+      res.reply({
+        status: 400,
+        body: {
+          error: 'Bad Request',
+          message: [
+            {
+              messages: [
+                {
+                  message: 'Incorrect code provided.'
+                }
+              ]
+            }
+          ]
+        }
+      })
+    })
+
+    cy.visit('/reset-password?code=wrong_code')
+
+    cy.findAllByPlaceholderText(/^password/i).type('123')
+    cy.findAllByPlaceholderText(/confirm password/i).type('123')
+    cy.findByRole('button', {name: /reset password/i}).click()
+
+    cy.findByText('Incorrect code provided.')
+  });
+
+  it.only('should fill the input and redirect to he home page with the user signed in', () => {
+    cy.intercept('POST', '**/auth/reset-password', res => {
+      res.reply({
+        status: 200,
+        body: { user: { email: 'cypress@email.com' }}
+      })
+    })
+
+    cy.intercept('POST', '**/auth/callback/credentials*', res => {
+      res.reply({
+        status: 200,
+        body: { user: { email: 'cypress@email.com' }}
+      })
+    })
+
+    cy.intercept('GET', '**/auth/session*', res => {
+      res.reply({
+        status: 200,
+        body: { user: { name: 'cypress', email: 'cypress@email.com'}}
+      })
+    })
+
+    
+    cy.visit('/reset-password?code=valid_token')
+
+    cy.findAllByPlaceholderText(/^password/i).type('123')
+    cy.findAllByPlaceholderText(/confirm password/i).type('123')
+    cy.findByRole('button', {name: /reset password/i}).click()
+
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+
+    cy.findByText(/cypress/i).should('exist')
+    
+  });
+});

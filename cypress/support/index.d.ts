@@ -1,6 +1,12 @@
 //load type definition from Cypress module
 ///<reference types="cypress" />
 
+type User = {
+  username: string
+  email: string
+  password: string
+}
+
 type ShowcaseAtributes = {
   name: string
   highlight?: boolean 
@@ -54,5 +60,17 @@ declare namespace Cypress {
      * @example cy.shouldBeGreaterThan(/^\$\d+(\.\d{1,2})?/)
      */
      shouldBeLessThan(value: number): Chainable<Element>
+    
+    /**
+     * Custom command to sign up
+     * @example cy.signUp({ username: 'Edu', email: 'email@mail.com', password: '123456'})
+     */
+     signUp(user: User): Chainable<Element>
+
+    /**
+     * Custom command to sign in
+     * @example cy.signUp({ email: 'email@mail.com', password: '123456'})
+     */
+     signIn(email?: string, password?: string): Chainable<Element>
   }
 }
