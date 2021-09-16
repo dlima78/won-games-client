@@ -72,5 +72,17 @@ declare namespace Cypress {
      * @example cy.signUp({ email: 'email@mail.com', password: '123456'})
      */
      signIn(email?: string, password?: string): Chainable<Element>
+
+    /**
+     * Custom command to add item to cart by index
+     * @example cy.addToCartByIndex(2)
+     */
+     addToCartByIndex(index: number): Chainable<Element>
+
+    /**
+     * Custom command to remove item from cart by index
+     * @example cy.removeFromCartByIndex(2)
+     */
+     removeFromCartByIndex(index: number): Chainable<Element>
   }
 }
