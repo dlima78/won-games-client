@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
+type SearchInputProps = {
+  isSearchInputOpen: boolean
+}
 export const Wrapper = styled.menu`
   ${({ theme }) => css`
     align-items: center;
@@ -11,11 +14,14 @@ export const Wrapper = styled.menu`
   `}
 `
 
-export const LogoWrapper = styled.div`
-  ${media.lessThan('medium')`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+export const LogoWrapper = styled.div<SearchInputProps>`
+  ${({ isSearchInputOpen }) => css`
+    ${media.lessThan('medium')`
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: ${isSearchInputOpen ? 1 : 0};
+    `}
   `}
 `
 export const MenuGroup = styled.div`
@@ -24,19 +30,20 @@ export const MenuGroup = styled.div`
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
-
     > div {
       margin-left: ${theme.spacings.xsmall};
     }
   `}
 `
 
-export const IconWrapper = styled.div`
-  ${({ theme }) => css`
+export const IconWrapper = styled.div<SearchInputProps>`
+  ${({ theme, isSearchInputOpen }) => css`
     color: ${theme.colors.white};
     cursor: pointer;
     height: 2.4rem;
     width: 2.4rem;
+    opacity: ${isSearchInputOpen ? 1 : 0};
+    pointer-events: ${isSearchInputOpen ? 'auto' : 'none'};
   `}
 `
 type MenuFullProps = {
@@ -156,5 +163,39 @@ export const CreateAccount = styled.a`
     font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.primary};
     border-bottom: 0.2rem solid ${theme.colors.primary};
+  `}
+`
+
+export const SearchInput = styled.div<SearchInputProps>`
+  ${({ theme, isSearchInputOpen }) => css`
+    background: ${theme.colors.darkGray};
+    border-radius: 2px;
+    height: 40px;
+    opacity: ${isSearchInputOpen ? 1 : 0};
+    pointer-events: ${isSearchInputOpen ? 'auto' : 'none'};
+    transition: opacity 0.2s ease-in-out;
+    border-bottom: 1px solid ${theme.colors.gray};
+    position: absolute;
+    width: 100%;
+
+    ${media.greaterThan('large')`
+      height: 36px;
+      left: 30%;
+      width: 30vw;    
+    `}
+  `}
+`
+
+export const Input = styled.input`
+  ${({ theme }) => css`
+    background-color: transparent;
+    color: ${theme.colors.lightGray};
+    height: 100%;
+    border: none;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    outline: none;
+    padding: 0 8px;
+    width: 100%;
   `}
 `

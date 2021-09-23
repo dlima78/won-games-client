@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import { render, screen, fireEvent } from 'utils/test-utils'
 
 import Menu from '.'
@@ -14,7 +15,7 @@ describe('<Menu />', () => {
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /won games/i })).toBeInTheDocument()
-    expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/search-icon/i)).toBeInTheDocument()
     expect(screen.getAllByLabelText(/shopping cart/i)).toHaveLength(2)
   })
 
@@ -62,5 +63,23 @@ describe('<Menu />', () => {
 
     expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
+  })
+
+  it('should show and hide SearchInput', () => {
+    render(<Menu />)
+
+    expect(screen.getByRole('textbox', { name: 'search' })).toBeInTheDocument()
+    expect(screen.getByLabelText(/search-wrapper/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/search-wrapper/i)).toHaveStyle({
+      opacity: 0
+    })
+
+    const icon = screen.getByLabelText(/search-icon/i)
+
+    userEvent.click(icon)
+
+    expect(screen.getByLabelText(/search-wrapper/i)).toHaveStyle({
+      opacity: 1
+    })
   })
 })

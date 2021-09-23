@@ -20,16 +20,19 @@ export type MenuProps = {
 
 const Menu = ({ username, loading }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
-
+  const [isSearchInputOpen, setIsSearchInputOpen] = useState(false)
   return (
     <S.Wrapper>
       <MediaMatch lessThan="medium">
-        <S.IconWrapper onClick={() => setIsOpen(true)}>
+        <S.IconWrapper
+          onClick={() => setIsOpen(true)}
+          isSearchInputOpen={!isSearchInputOpen}
+        >
           <MenuIcon aria-label="Open Menu" />
         </S.IconWrapper>
       </MediaMatch>
 
-      <S.LogoWrapper>
+      <S.LogoWrapper isSearchInputOpen={!isSearchInputOpen}>
         <Link href="/" passHref>
           <a>
             <Logo hideOnMobile />
@@ -49,11 +52,25 @@ const Menu = ({ username, loading }: MenuProps) => {
       </MediaMatch>
       {!loading && (
         <>
+          <S.SearchInput
+            aria-label="search-wrapper"
+            isSearchInputOpen={isSearchInputOpen}
+          >
+            <S.Input
+              type="text"
+              aria-label="search"
+              placeholder="Search"
+              autoFocus
+            />
+          </S.SearchInput>
           <S.MenuGroup>
-            <S.IconWrapper>
-              <SearchIcon aria-label="Search" />
+            <S.IconWrapper isSearchInputOpen={!isSearchInputOpen}>
+              <SearchIcon
+                aria-label="search-icon"
+                onClick={() => setIsSearchInputOpen(!isSearchInputOpen)}
+              />
             </S.IconWrapper>
-            <S.IconWrapper>
+            <S.IconWrapper isSearchInputOpen={!isSearchInputOpen}>
               <MediaMatch greaterThan="medium">
                 <CartDropdown />
               </MediaMatch>
